@@ -53,7 +53,7 @@ while True:
              print("Total de iva>>   ",tiva)
              input("Presiona cualquier tecla para volver al menu")
              cursor = conexion.cursor()
-             cursor.execute("INSERT INTO ej2(precio, iva,tiva) VALUES(%s,%s%s);", (precio,iva,tiva))
+             cursor.execute("INSERT INTO ej22 (precio,iva,totaliva) VALUES(%s,%s,%s);",(precio,iva,tiva))
              conexion.commit()
              cursor.close()
          except:
@@ -66,10 +66,10 @@ while True:
          
         os.system('cls')
         cursor = conexion.cursor()
-        SQL = 'SELECT*FROM ej2;'
+        SQL = 'SELECT*FROM ej22;'
         cursor.execute(SQL)
         valores= cursor.fetchall()
-        print("Los valores ud los observara de la siguiente manera, (prec1io, precio con iva)")
+        print("Los valores ud los observara de la siguiente manera, (prec1io, precio sin iva , total iva)")
         print("")
         print(valores)
         print("")
