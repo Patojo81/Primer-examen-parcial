@@ -30,46 +30,31 @@ except psycopg2.Error as e:
 def menu():
     os.system('cls')
     print ("                  MENU")
-    print ("\t1 - Jugar 8")
+    print ("\t1 - Calcular Iva")
     print ("\t2 - Ver historial")
     print ("\t0 - SALIR")
 
 
 while True:
-    os.system('cls')
+
     menu()
     print ("")
     opcionMenu = input("        Seleccione una opcion >>")
 
     if opcionMenu=="1": 
          try:
-            sj= True
-            while sj:
-            
-             print ("Jugando 8")
+             os.system('cls')
+             print ("Calculando IVA")
              print ("")
-             pdado = random.randint(1,6)
-             sdado = random.randint(1,6)
-             print(pdado)
-             print(sdado)
-             suma = pdado + sdado
-             print("La suma es igual a", suma)
+             precio = float(input ("Precio: "))
+             iva=precio *1.12
+             print("el precio sin iva es de >>   ",precio)
+             print("el precio con iva es de >>   ",iva)
+             input("Presiona cualquier tecla para volver al menu")
              cursor = conexion.cursor()
-             cursor.execute("INSERT INTO ej1(dado1, dado2, suma) VALUES(%s,%s,%s);", (pdado,sdado,suma))
+             cursor.execute("INSERT INTO ej2(precio, iva) VALUES(%s,%s);", (precio,iva))
              conexion.commit()
              cursor.close()
-
-             if suma == 7 :
-                sj = False
-                input("Ud Perdio...\nPresiona cualquier tecla para volver al menu")
-             else:
-                sj = True
-             if suma == 8 :
-                sj = False
-                input("Ud Gano...\nPresiona cualquier tecla para volver al menu")
-             else:
-                sj = True
-        
          except:
             print ("Ocurrio un error")
             print("")
@@ -80,10 +65,10 @@ while True:
          
         os.system('cls')
         cursor = conexion.cursor()
-        SQL = 'SELECT*FROM ej1;'
+        SQL = 'SELECT*FROM ej2;'
         cursor.execute(SQL)
         valores= cursor.fetchall()
-        print("Los valores ud los observara de la siguiente manera, (dado 1, dado 2, Suma)")
+        print("Los valores ud los observara de la siguiente manera, (prec1io, precio con iva)")
         print("")
         print(valores)
         print("")
@@ -95,9 +80,9 @@ while True:
             input("no se pudieron obtener los valores\nPresiona cualquier tecla para volver al menu")
             os.system('CLS')
 
-            
     if opcionMenu=="0":             
         os.system('cls')
         print ("Saliste")
         conexion.close()
         break
+
