@@ -47,12 +47,13 @@ while True:
              print ("Calculando IVA")
              print ("")
              precio = float(input ("Precio: "))
-             iva=precio *1.12
-             print("el precio sin iva es de >>   ",precio)
-             print("el precio con iva es de >>   ",iva)
+             iva=precio /1.12
+             tiva= precio-iva
+             print("el precio sin iva es de >>   ",iva)
+             print("Total de iva>>   ",tiva)
              input("Presiona cualquier tecla para volver al menu")
              cursor = conexion.cursor()
-             cursor.execute("INSERT INTO ej2(precio, iva) VALUES(%s,%s);", (precio,iva))
+             cursor.execute("INSERT INTO ej2(precio, iva,tiva) VALUES(%s,%s%s);", (precio,iva,tiva))
              conexion.commit()
              cursor.close()
          except:
