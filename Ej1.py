@@ -31,9 +31,12 @@ def menu():
     os.system('cls')
     print ("                  MENU")
     print ("\t1 - Jugar 8")
+    print ("\t2 - Ver historial")
     print ("\t0 - SALIR")
 
+
 while True:
+    os.system('cls')
     menu()
     print ("")
     opcionMenu = input("        Seleccione una opcion >>")
@@ -42,23 +45,53 @@ while True:
          try:
             sj= True
             while sj:
-             os.system('cls')
-             print ("Usted a elegido Jugar 8")
+            
+             print ("Jugando 8")
              print ("")
              pdado = random.randint(1,6)
              sdado = random.randint(1,6)
              print(pdado)
              print(sdado)
              suma = pdado + sdado
-             print(suma)
+             print("La suma es igual a", suma)
+             cursor = conexion.cursor()
+             cursor.execute("INSERT INTO ej1(dado1, dado2, suma) VALUES(%s,%s,%s);", (pdado,sdado,suma))
+             conexion.commit()
+             cursor.close()
 
-             if suma == "7" :
+             if suma == 7 :
                 sj = False
-                
+                input("Ud Perdio...\nPresiona cualquier tecla para volver al menu")
+             else:
+                sj = True
+             if suma == 8 :
+                sj = False
+                input("Ud Gano...\nPresiona cualquier tecla para volver al menu")
              else:
                 sj = True
         
          except:
-            print ("Alguno de los caracteres introducidos no es un numero")
+            print ("Ocurrio un error")
             print("")
             input("Presiona cualquier tecla para volver al menu")
+
+    if opcionMenu=="2":
+     try:
+         
+        os.system('cls')
+        cursor = conexion.cursor()
+        SQL = 'SELECT*FROM ej1;'
+        cursor.execute(SQL)
+        valores= cursor.fetchall()
+        print("Los valores ud los observara de la siguiente manera, (dado 1, dado 2, Suma)")
+        print("")
+        print(valores)
+        print("")
+        input("Estos son los valores encontrados...\nPresiona cualquier tecla para volver al menu")
+        conexion.commit()
+        cursor.close()
+     except:
+            os.system('CLS')
+            input("no se pudieron obtener los valores\nPresiona cualquier tecla para volver al menu")
+            os.system('CLS')
+
