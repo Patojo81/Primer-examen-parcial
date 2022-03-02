@@ -1,7 +1,6 @@
 pkg load database
 conn = pq_connect (setdbopts ("dbname", "ejercicios", "host", "localhost", "port", "5432", "user", "postgres", "password", "C3leste2112"))
- try
-   
+ try  
  d1=randi(6)
  d2=randi(6)
  suma = d1+d2;
@@ -24,4 +23,5 @@ catch
 disp("Algo salió mal")
 end_try_catch
 
-N=pq_exec_params(conn, 'select * from ej1;')
+#N=pq_exec_params(conn, 'select * from ej1;')
+#coomit
