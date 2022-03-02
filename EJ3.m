@@ -15,4 +15,5 @@ catch
 end_try_catch
 
 N= pq_exec_params(conn, "insert into Ej3oc values ($1,$2,$3);",{p,siv,iva});
-N= pq_exec_params(conn, 'select * from Ej3oc;')
+#N= pq_exec_params(conn, 'select * from Ej3oc;')
+#commit
