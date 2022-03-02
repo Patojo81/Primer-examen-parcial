@@ -4,7 +4,7 @@ import psycopg2
 import time
 import random
 import statistics
-
+'#commit'
 from pyparsing import Char 
 try:
     conexion = psycopg2.connect(
@@ -84,7 +84,7 @@ while True:
              print("la moda es >>",statistics.mode(vn))
              print("el rango es >>   ",rango)
              print("la desviacion estandar es >>",statistics.stdev(vn))
-             print("la desviacion estandar es >>",statistics.variance(vn))
+             print("la Varianza estandar es >>",statistics.variance(vn))
             
              input("Presiona cualquier tecla para volver al menu")
              cursor = conexion.cursor()
