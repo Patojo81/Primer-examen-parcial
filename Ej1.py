@@ -3,7 +3,7 @@ from numpy import empty
 import psycopg2
 import time
 import random
-
+'#commit'
 from pyparsing import Char 
 try:
     conexion = psycopg2.connect(
