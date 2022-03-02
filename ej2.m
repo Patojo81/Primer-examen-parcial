@@ -28,4 +28,5 @@ catch
 end_try_catch
 
 pq_exec_params(conn, 'insert into ej3 values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12);',{nota1,nota2,nota3,nota4,nota5,media,mediana,moda,maximo,minimo,desvest,varianza});
-N=pq_exec_params(conn, 'select * from ej3;')
+#N=pq_exec_params(conn, 'select * from ej3;')
+#coomit
