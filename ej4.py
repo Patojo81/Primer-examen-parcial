@@ -3,7 +3,7 @@ from numpy import empty
 import psycopg2
 import time
 import random
-
+'#commit'
 from pyparsing import Char 
 try:
     conexion = psycopg2.connect(
@@ -60,12 +60,12 @@ while True:
                 if cant_divisores==2:
                     print("El número es primo")
                     res = "Número primo"
-                    cursor.execute("insert into ej4(num) values(%s);",(n))
+                    cursor.execute("insert into ej4(num) VALUES(%s);",(n))
                     conexion.commit()
                 else:
                     print("El número es compuesto")
                     res = "Número compuesto"
-                    cursor.execute("insert into ej4(num) values(%s);",(n))
+                    cursor.execute("insert into ej4(num) VALUES(%s);",(n))
                     conexion.commit()
                     cursor.close()
                    
